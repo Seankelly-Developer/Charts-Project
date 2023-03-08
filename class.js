@@ -46,9 +46,12 @@ function draw(){
     graphs[0].render();
     graphs[1].render();
     drawLegend(colors, userSelect, 1000, 100, 12);
+    drawTitle("Stacked Bar Chart to display sales for each car make for 3 different years", 880, 50, 10, "black");
+    drawTitle("Bar Chart to display average sales of each car make across 3 years", 300, 50, 10, "black");
     noLoop();
    
 }
+
 function drawLegend(colors, labels, x, y, dotSize) {
     const padding = 10; // space between dots and text
     textSize(12);
@@ -60,3 +63,10 @@ function drawLegend(colors, labels, x, y, dotSize) {
       text(labels[i], x + padding, y + (i * dotSize * 2));
     }
   }
+  function drawTitle(title, x, y, fontSize, textColor) {
+    textSize(fontSize);
+    fill(textColor);
+    textAlign(CENTER, CENTER);
+    text(title, x, y);
+  }
+  
