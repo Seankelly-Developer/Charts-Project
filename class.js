@@ -36,6 +36,9 @@ async function setup(){
 
      //Stacked Chart
      graphs.push(new StackedBarChart(700, 500, 400, 400, data, data.getRowCount(), 10, 10, -5, 5));
+
+     //Lined Bar Chart
+     graphs.push(new linedBarChart(100, 1000, 400, 400, data, data.getRowCount(), 10, 10, -5, 5, "Lined Bar Chart"));
 }
 
 
@@ -45,9 +48,11 @@ function draw(){
     //Insert render commands in here to draw to canvas
     graphs[0].render();
     graphs[1].render();
+    graphs[2].render();
     drawLegend(colors, userSelect, 1000, 100, 12);
     drawTitle("Stacked Bar Chart to display sales for each car make for 3 different years", 880, 50, 10, "black");
     drawTitle("Bar Chart to display average sales of each car make across 3 years", 300, 50, 10, "black");
+   
     noLoop();
    
 }
@@ -63,10 +68,18 @@ function drawLegend(colors, labels, x, y, dotSize) {
       text(labels[i], x + padding, y + (i * dotSize * 2));
     }
   }
+
+
   function drawTitle(title, x, y, fontSize, textColor) {
     textSize(fontSize);
     fill(textColor);
     textAlign(CENTER, CENTER);
     text(title, x, y);
   }
+
+
+  
+  
+
+  
   
