@@ -80,6 +80,8 @@ class StackedBarChart{
         }
         
     }
+    
+      
     yAxisGrid(){
         for(let x = 0; x <= this.numHgrid ;x++){
             stroke(150, 5);

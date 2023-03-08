@@ -1,7 +1,6 @@
 let data;
-
 let userSelect = ["2022_Sales", "2021_Sales", "2020_Sales"];
-let colors = ["#7F7F7F", "#262626", "#595959"
+let colors = ["	#ffa700", "	#d600ff", "#7e00b6"
 ];
 const colors2 = [
     "#171717",
@@ -115,10 +114,9 @@ let graphs=[];
 
 function preload(){
     data = loadTable('data/master.csv', 'csv', 'header');
+    drawLegend(userSelect, colors, 800, 300, 10, 16);
 }
 async function setup(){
-  
-
     createCanvas(1300,3000);
     angleMode(DEGREES);
     rectMode(CORNER);
@@ -130,13 +128,25 @@ async function setup(){
      graphs.push(new StackedBarChart(700, 450, 400, 400, data, data.getRowCount(), 10, 10, -5, 5));
 }
 
+
+
 function draw(){
     
     //Insert render commands in here to draw to canvas
     graphs[0].render();
     graphs[1].render();
+    drawLegend(colors, userSelect, 1000, 100, 12);
     noLoop();
    
 }
-
-
+function drawLegend(colors, labels, x, y, dotSize) {
+    const padding = 10; // space between dots and text
+    textSize(12);
+    textAlign(LEFT, CENTER);
+    for (let i = 0; i < colors.length; i++) {
+      fill(colors[i]);
+      ellipse(x, y + (i * dotSize * 2), dotSize, dotSize);
+      fill(0);
+      text(labels[i], x + padding, y + (i * dotSize * 2));
+    }
+  }
