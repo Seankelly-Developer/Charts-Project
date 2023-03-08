@@ -112,7 +112,6 @@ const colors2 = [
 
 //Arrays to store instantiated graph objects
 let graphs=[];
-let stackedGraphs=[];
 
 function preload(){
     data = loadTable('data/master.csv', 'csv', 'header');
@@ -126,13 +125,16 @@ async function setup(){
 
      //Bar Chart
      graphs.push(new barChart(100, 450, 400, 400, data, data.getRowCount(), 10, 10, -5, 5, "Bar Chart"));
+
+     //Stacked Chart
+     graphs.push(new StackedBarChart(700, 450, 400, 400, data, data.getRowCount(), 10, 10, -5, 5));
 }
 
 function draw(){
     
     //Insert render commands in here to draw to canvas
     graphs[0].render();
-   
+    graphs[1].render();
     noLoop();
    
 }
