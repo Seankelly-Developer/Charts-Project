@@ -45,6 +45,10 @@ async function setup(){
 
      //Horizontal Stacked Chart
      graphs.push(new HorizontalStackedChart(700, 1600, 400, 400, data, data.getRowCount(), 10, 10, -5, 5));
+
+     graphs.push(new LineGraph(100, 1600, 400, 400, data, data.getRowCount(), 10, 10, -5, 5, "LinenGraph"));
+
+     
 }
 
 
@@ -57,6 +61,7 @@ function draw(){
     graphs[2].render();
     graphs[3].render();
     graphs[4].render();
+    graphs[5].render();
     textStyle(BOLD);
     drawLegend(colors, userSelect, 1000, 100, 12);
     drawLegend(colors, userSelect, 1000, 1400, 12);
@@ -67,6 +72,8 @@ function draw(){
     drawTitle("Horizontal Bar Chart to display 2022 sales of each car make", 880, 600, 12, "black");
 
     drawTitle("Horizontal Stacked Chart to display sales of each car make for 3 years", 880, 1150, 12, "black");
+
+    drawTitle("Line Graph to display average sales of each car make across 3 years", 300, 1150, 12, "black");
    
     noLoop();
    
