@@ -18,16 +18,15 @@ class StackedBarChart{
         this.barWidth = (this.width - (this.leftMargin + this.rightMargin) - ((this.bars - 1)* this.barGap))/this.bars;
         this.barSpacing = this.barWidth+this.barGap;
         this.highestValue = int(this.data.rows[0].obj.Total);
+    
+        for (let i = 1; i < this.bars; i++) {
+            let value = int(this.data.rows[i].obj.Total);
+            if (value > this.highestValue) {
+                this.highestValue = value;
+            }
+        }
+        this.highestValue = this.highestValue*1.2;
 
-        // for(let x=0; x<this.bars-1; x++){
-
-        //     //Getting the total value from the csv
-        //     if(this.highestValue = int(this.data.rows[x].obj.Total)>this.highestValue){
-        //         this.highestValue = int(this.data.rows[x].obj.Total);
-        //     }
-        // }
-
-        this.highestValue= 50000;
         this.LabelGap = this.highestValue/this.markers;
     }
 

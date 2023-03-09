@@ -16,9 +16,21 @@ class linedBarChart{
         this.markerGap = this.height/this.markers;
         this.rectWidth = (this.width - (this.leftMargin + this.rightMargin) - ((this.bars - 1)* this.barSpace))/this.bars;
         this.barSpacing = this.rectWidth+this.barSpace;
+        
+        
+
         this.highestValue = int(this.data.rows[0].obj.Total);
-        this.highestValue = 40000;
+    
+        for (let i = 1; i < this.bars; i++) {
+            let value = int(this.data.rows[i].obj.Total);
+            if (value > this.highestValue) {
+                this.highestValue = value;
+            }
+        }
+        this.highestValue = this.highestValue*1.2;
+
         this.LabelGap = this.highestValue/this.markers;
+        
         
     }
 

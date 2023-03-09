@@ -17,20 +17,15 @@ class barChart{
         this.rectWidth = (this.width - (this.leftMargin + this.rightMargin) - ((this.bars - 1)* this.barSpace))/this.bars;
         this.barSpacing = this.rectWidth+this.barSpace;
         this.highestValue = int(this.data.rows[0].obj.Mean);
+    
+        for (let i = 1; i < this.bars; i++) {
+            let value = int(this.data.rows[i].obj.Mean);
+            if (value > this.highestValue) {
+                this.highestValue = value;
+            }
+        }
+        this.highestValue = this.highestValue*1.2;
         console.log(this.highestValue); 
-
-
-        // for(let x=0; x<this.bars-1; x++){
-        //     //Getting the total value from the csv
-        //     if(this.highestValue = int(this.data.rows[x].obj.Mean)>this.highestValue){
-        //         this.highestValue = int(this.data.rows[x].obj.Mean);
-        //         console.log(this.highestValue);
-        //     }
-            
-        // }
-
-        
-        this.highestValue = 15042;
         this.LabelGap = this.highestValue/this.markers;
         
     }
