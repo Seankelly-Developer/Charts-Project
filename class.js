@@ -42,6 +42,9 @@ async function setup(){
 
      //Horizontal Bar Chart
      graphs.push(new HorizontalBarChart(700, 1050, 400, 400, data, data.getRowCount(), 10, 10, -5, 5));
+
+     //Horizontal Stacked Chart
+     graphs.push(new HorizontalStackedChart(700, 1550, 400, 400, data, data.getRowCount(), 10, 10, -5, 5));
 }
 
 
@@ -53,8 +56,8 @@ function draw(){
     graphs[1].render();
     graphs[2].render();
     graphs[3].render();
+    graphs[4].render();
     drawLegend(colors, userSelect, 1000, 100, 12);
-
 
     //Calling drawTitle function to add titles for each chart. L
     drawTitle("Stacked Bar Chart to display sales for each car make for 3 different years", 880, 50, 10, "black");
