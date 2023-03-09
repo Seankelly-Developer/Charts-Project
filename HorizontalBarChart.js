@@ -134,6 +134,7 @@ class HorizontalBarChart{
             push();
             translate(0, 420);
             textSize(10);
+            textStyle(BOLD);
             text(int(x*this.LabelGap), x*this.markerGap, -this.height-this.markerSize);
             pop();
         }
@@ -156,6 +157,7 @@ class HorizontalBarChart{
             translate(this.barSpacing + (x*this.barSpacing),0);
             fill(1);
             textSize(10);
+            textStyle(BOLD);
             textAlign(LEFT);
             text(this.data.rows[x].obj.Month, -35, 20);
             pop();
@@ -169,6 +171,7 @@ class HorizontalBarChart{
                 translate(-15,this.barSpacing + (x*this.barSpacing)-432);
                 fill(2);
                 textSize(10);
+                textStyle(BOLD);
                 textAlign(LEFT);
                 text(this.data.rows[x].obj.Make, -29, 20);
                 pop();

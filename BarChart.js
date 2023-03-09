@@ -129,6 +129,7 @@ class barChart{
             noStroke();
             fill(1);
             textAlign(LEFT, CENTER);
+            textStyle(BOLD);
             text(int(x*this.LabelGap), -45, x*-this.markerGap);
         }
     }
@@ -149,6 +150,7 @@ class barChart{
             translate(this.barSpacing + (x*this.barSpacing),0);
             fill(2);
             textSize(8);
+            textStyle(BOLD);
             textAlign(LEFT);
             text(this.data.rows[x].obj.Make, -22, 20);
             pop();

@@ -135,6 +135,7 @@ class linedBarChart{
             noStroke();
             fill(1);
             textAlign(LEFT, CENTER);
+            textStyle(BOLD);
             text(int(x*this.LabelGap), -60, x*-this.markerGap);
         }
     }
@@ -156,6 +157,7 @@ class linedBarChart{
             fill(2);
             textSize(8);
             textAlign(LEFT);
+            textStyle(BOLD);
             text(this.data.rows[x].obj.Make, -22, 20);
             pop();
         }

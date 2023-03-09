@@ -132,6 +132,7 @@ class StackedBarChart{
             fill(1);
             textAlign(LEFT);
             textSize(8);
+            textStyle(BOLD);
             text(this.data.rows[x].obj.Make, -22, 20);
             pop();
         }
@@ -142,6 +143,7 @@ class StackedBarChart{
             noStroke();
             fill(1);
             textAlign(LEFT, CENTER);
+            textStyle(BOLD);
             text(int(x*this.LabelGap), -45, x*-this.markerGap);
         }
     }
