@@ -133,8 +133,8 @@ class HorizontalBarChart{
             textAlign(CENTER, CENTER);
             push();
             translate(0, 420);
-            textSize(7);
-            text(int(x*this.LabelGap).toFixed(2), x*this.markerGap, -this.height-this.markerSize-5);
+            textSize(10);
+            text(int(x*this.LabelGap), x*this.markerGap, -this.height-this.markerSize);
             pop();
         }
         
@@ -168,9 +168,9 @@ class HorizontalBarChart{
                 push();
                 translate(-15,this.barSpacing + (x*this.barSpacing)-432);
                 fill(2);
-                textSize(8);
+                textSize(10);
                 textAlign(LEFT);
-                text(this.data.rows[x].obj.Make, -22, 20);
+                text(this.data.rows[x].obj.Make, -29, 20);
                 pop();
             }
         

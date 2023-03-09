@@ -142,7 +142,7 @@ class StackedBarChart{
             noStroke();
             fill(1);
             textAlign(LEFT, CENTER);
-            text(int(x*this.LabelGap).toFixed(2), -65, x*-this.markerGap);
+            text(int(x*this.LabelGap), -45, x*-this.markerGap);
         }
     }
 

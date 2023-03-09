@@ -135,7 +135,7 @@ class linedBarChart{
             noStroke();
             fill(1);
             textAlign(LEFT, CENTER);
-            text(int(x*this.LabelGap).toFixed(2), -60, x*-this.markerGap);
+            text(int(x*this.LabelGap), -60, x*-this.markerGap);
         }
     }
 
