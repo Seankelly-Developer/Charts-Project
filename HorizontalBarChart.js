@@ -44,6 +44,7 @@ class HorizontalBarChart{
         this.chartLabels();
         this.xAxisGrid();
         this.yAxisGrid();
+        this.yAxisLabels();
         this.rectangleLabels();
         pop();
     }
@@ -60,15 +61,15 @@ class HorizontalBarChart{
     //Methods to draw the two axis
     xAxis(){
         noFill();
-        strokeWeight(1);
-        stroke(0);
-        line(0,0,this.width,0);
+    strokeWeight(1);
+    stroke(0);
+    line(0,0,0,-this.height);
     }
     yAxis(){
         noFill();
         strokeWeight(1);
         stroke(0);
-        line(0,0,0,-this.height);
+        line(0,0,this.width,0);
     }
 
 
@@ -77,7 +78,7 @@ class HorizontalBarChart{
         for(let x = 0; x <= this.markers ;x++){
             stroke(150, 5);
             strokeWeight(2);
-            line(this.markerSize, x*-this.markerGap, this.width, x*-this.markerGap)
+            line(x*this.markerGap, 0, x*this.markerGap, -this.height)
         }
         
     }
@@ -85,7 +86,7 @@ class HorizontalBarChart{
         for(let x = 0; x <= this.numHgrid ;x++){
             stroke(150, 5);
             strokeWeight(2);
-            line(x*this.width/this.numHgrid, -this.height, x*this.width/this.numHgrid, 0)
+            line(0, -x*this.height/this.numHgrid, this.width, -x*this.height/this.numHgrid)
         }
     }
 
@@ -116,9 +117,12 @@ class HorizontalBarChart{
     chartMarkers(){
         for(let x = 0; x <= this.markers ;x++){
             strokeWeight(1);
-            line(this.markerSize+2, x*-this.markerGap, 0, x*-this.markerGap);
-            
+            push();
+            translate(0, 400);
+            line(x*this.markerGap, -this.height, x*this.markerGap, -this.height-this.markerSize);
+            pop();
         }
+        
     }
 
 
@@ -126,9 +130,14 @@ class HorizontalBarChart{
         for(let x = 0; x <= this.markers ;x++){
             noStroke();
             fill(1);
-            textAlign(LEFT, CENTER);
-            text(int(x*this.LabelGap).toFixed(2), -50, x*-this.markerGap);
+            textAlign(CENTER, CENTER);
+            push();
+            translate(0, 420);
+            textSize(7);
+            text(int(x*this.LabelGap).toFixed(2), x*this.markerGap, -this.height-this.markerSize-5);
+            pop();
         }
+        
     }
 
     
@@ -153,5 +162,18 @@ class HorizontalBarChart{
         }
     }
 
+    yAxisLabels(){
+        
+            for(let x = 0; x<this.bars; x++){
+                push();
+                translate(-15,this.barSpacing + (x*this.barSpacing)-432);
+                fill(2);
+                textSize(8);
+                textAlign(LEFT);
+                text(this.data.rows[x].obj.Make, -22, 20);
+                pop();
+            }
+        
+    }
 
 }
