@@ -87,36 +87,36 @@ class LineGraph{
     }
 
     //Draw the bar chart
-    barChart(){
+    // barChart(){
         
 
-        for(let x = 0; x<this.bars; x++){
+    //     for(let x = 0; x<this.bars; x++){
             
-        let color = random(colors2);
+    //     let color = 0;
         
-        //Code below removes used colors from the array in order to prevent repeating colors.
+    //     //Code below removes used colors from the array in order to prevent repeating colors.
 
-        let index = colors2.indexOf(color);
-        if (index > -1) { // only splice array when item is found
-            colors2.splice(index, 1); // 2nd parameter means remove one item only
-          }
-        push();
+    //     // let index = colors2.indexOf(color);
+    //     // if (index > -1) { // only splice array when item is found
+    //     //     colors2.splice(index, 1); // 2nd parameter means remove one item only
+    //     //   }
+    //     push();
        
-        translate(this.leftMargin + (x*this.barSpacing), 0);
+    //     translate(this.leftMargin + (x*this.barSpacing), 0);
    
-        fill(color);
-        let prop = "Mean";
+    //     fill(color);
+    //     let prop = "Mean";
         
-        rect(0, 0,this.rectWidth,this.barScaler(int(-this.data.rows[x].obj[prop])));
-        pop();
-        }
+    //     rect(0, 0,this.rectWidth,this.barScaler(int(-this.data.rows[x].obj[prop])));
+    //     pop();
+    //     }
         
 
-    }
+    // }
     lineGraph() {
         noFill();
         strokeWeight(2);
-        let color = random(colors2);
+        let color = 0;
         stroke(color);
         beginShape();
         for(let x = 0; x < this.bars; x++) {
