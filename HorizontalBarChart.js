@@ -17,14 +17,17 @@ class HorizontalBarChart{
         this.markerGap = this.height/this.markers;
         this.rectWidth = (this.width - (this.leftMargin + this.rightMargin) - ((this.bars - 1)* this.barSpace))/this.bars;
         this.barSpacing = this.rectWidth+this.barSpace;
-        this.highestValue = int(this.data.rows[0].obj.Mean);
-        for(let x=0; x<this.bars-1; x++){
+        // this.highestValue = int(this.data.rows[0].obj.Mean);
 
-            //Getting the total value from the csv
-            if(this.highestValue = int(this.data.rows[x].obj.Mean)>this.highestValue){
-                this.highestValue = int(this.data.rows[x].obj.Mean);
-            }
-        }
+        this.highestValue = 18000;
+        // for(let x=0; x<this.bars-1; x++){
+
+        //     //Getting the total value from the csv
+        //     if(this.highestValue = int(this.data.rows[x].obj.Mean)>this.highestValue){
+        //         this.highestValue = int(this.data.rows[x].obj.Mean);
+        //     }
+        // }
+        console.log(this.highestValue);
         this.LabelGap = this.highestValue/this.markers;
     }
 
@@ -91,11 +94,8 @@ class HorizontalBarChart{
         
         for(let x = 0; x<this.bars; x++){
             
-            
             let color = random(colors2);
-            
             //Code below removes used colors from the array in order to prevent repeating colors.
-    
             let index = colors2.indexOf(color);
             if (index > -1) { // only splice array when item is found
                 colors2.splice(index, 1); // 2nd parameter means remove one item only
@@ -105,16 +105,11 @@ class HorizontalBarChart{
             translate(this.leftMargin + (x*this.barSpacing), 0);
             translate(-400, 0);
             fill(color);
-            let prop = "Mean";
-            // rotate(-270);
-            // translate(-120, 100)
+            let prop = "2022_Sales"
             rect(0, 0,this.rectWidth,this.barScaler(int(-this.data.rows[x].obj[prop])));
-           
             pop();
             }
-            textSize(12);
-            textAlign(CENTER, BOTTOM);
-            text('Average Sales', this.width/2, 50);
+
     
     }
     
