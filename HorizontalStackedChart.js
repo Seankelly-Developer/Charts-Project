@@ -1,6 +1,6 @@
 class HorizontalStackedChart{
 
-    constructor(_posX, _posY, _height, _width, _data, _bars, _barGap, _markers, _markerSize, _hGrid){
+    constructor(_posX, _posY, _height, _width, _data, _bars, _barGap, _ticks, _tickSize, _hGrid){
 
         this.height = _height;
         this.width = _width;
@@ -9,12 +9,12 @@ class HorizontalStackedChart{
         this.data = _data;
         this.bars = _bars;
         this.barGap = _barGap;
-        this.markerSize = _markerSize
-        this.markers = _markers;
+        this.tickSize = _tickSize
+        this.ticks = _ticks;
         this.leftMargin = 10;
         this.rightMargin = 10;
         this.hGrid = _hGrid
-        this.markerGap = this.height/this.markers;
+        this.tickGap = this.height/this.ticks;
         this.barWidth = (this.width - (this.leftMargin + this.rightMargin) - ((this.bars - 1)* this.barGap))/this.bars;
         this.barSpacing = this.barWidth+this.barGap;
         this.highestValue = int(this.data.rows[0].obj.Total);
@@ -26,7 +26,7 @@ class HorizontalStackedChart{
             }
         }
         this.highestValue = this.highestValue*1.2;
-        this.LabelGap = this.highestValue/this.markers;
+        this.LabelGap = this.highestValue/this.ticks;
     }
 
     // executes the functions
@@ -36,7 +36,7 @@ class HorizontalStackedChart{
         this.yAxis();
         this.xAxis();
         this.horStackedChart();
-        this.chartMarkers();
+        this.tickCreation();
         this.chartLabels();
         this.xAxisGrid();
         this.yAxisGrid();
@@ -69,12 +69,12 @@ class HorizontalStackedChart{
     }
 
 
-    //Methods to draw the markers on the two axis
+    //Methods to draw the ticks on the two axis
     xAxisGrid(){
-        for(let x = 0; x <= this.markers ;x++){
+        for(let x = 0; x <= this.ticks ;x++){
             stroke(150, 5);
             strokeWeight(2);
-            line(x*this.markerGap, 0, x*this.markerGap, -this.height)
+            line(x*this.tickGap, 0, x*this.tickGap, -this.height)
         }
         
     }
@@ -118,12 +118,12 @@ class HorizontalStackedChart{
 
     }
     
-    chartMarkers(){
-        for(let x = 0; x <= this.markers ;x++){
+    tickCreation(){
+        for(let x = 0; x <= this.ticks ;x++){
             strokeWeight(1);
             push();
             translate(0, 400);
-            line(x*this.markerGap, -this.height, x*this.markerGap, -this.height-this.markerSize);
+            line(x*this.tickGap, -this.height, x*this.tickGap, -this.height-this.tickSize);
             pop();
         }
     }
@@ -157,7 +157,7 @@ class HorizontalStackedChart{
 }
 
 chartLabels(){
-    for(let x = 0; x <= this.markers ;x++){
+    for(let x = 0; x <= this.ticks ;x++){
         noStroke();
         fill(1);
         textAlign(CENTER, CENTER);
@@ -165,7 +165,7 @@ chartLabels(){
         translate(0, 420);
         textSize(10);
         textStyle(BOLD);
-        text(int(x*this.LabelGap), x*this.markerGap, -this.height-this.markerSize);
+        text(int(x*this.LabelGap), x*this.tickGap, -this.height-this.tickSize);
         pop();
     }
     

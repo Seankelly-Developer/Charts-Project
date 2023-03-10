@@ -1,6 +1,6 @@
 class StackedBarChart{
 
-    constructor(_posX, _posY, _height, _width, _data, _bars, _barGap, _markers, _markerSize, _hGrid){
+    constructor(_posX, _posY, _height, _width, _data, _bars, _barGap, _ticks, _tickSize, _hGrid){
 
         this.height = _height;
         this.width = _width;
@@ -9,12 +9,12 @@ class StackedBarChart{
         this.data = _data;
         this.bars = _bars;
         this.barGap = _barGap;
-        this.markerSize = _markerSize
-        this.markers = _markers;
+        this.tickSize = _tickSize
+        this.ticks = _ticks;
         this.leftMargin = 10;
-        this.rightMargin = 10;
+        this.rightMargin = 10;  
         this.hGrid = _hGrid
-        this.markerGap = this.height/this.markers;
+        this.tickGap = this.height/this.ticks;
         this.barWidth = (this.width - (this.leftMargin + this.rightMargin) - ((this.bars - 1)* this.barGap))/this.bars;
         this.barSpacing = this.barWidth+this.barGap;
         this.highestValue = int(this.data.rows[0].obj.Total);
@@ -27,7 +27,7 @@ class StackedBarChart{
         }
         this.highestValue = this.highestValue*1.2;
 
-        this.LabelGap = this.highestValue/this.markers;
+        this.LabelGap = this.highestValue/this.ticks;
     }
 
     // executes the functions
@@ -37,11 +37,10 @@ class StackedBarChart{
         this.yAxis();
         this.xAxis();
         this.StackedBarChart();
-        this.chartMarkers();
+        this.tickCreation();
         this.chartLabels();
         this.xAxisGrid();
         this.yAxisGrid();
-        // this.barLabels();
         this.xAxisLabels();
         pop();
     }
@@ -70,12 +69,12 @@ class StackedBarChart{
     }
 
 
-    //Methods to draw the markers on the two axis
+    //Methods to draw the ticks on the two axis
     xAxisGrid(){
-        for(let x = 0; x <= this.markers ;x++){
+        for(let x = 0; x <= this.ticks ;x++){
             stroke(150, 5);
             strokeWeight(2);
-            line(this.markerSize, x*-this.markerGap, this.width, x*-this.markerGap)
+            line(this.tickSize, x*-this.tickGap, this.width, x*-this.tickGap)
         }
         
     }
@@ -117,10 +116,10 @@ class StackedBarChart{
         
     }
     
-    chartMarkers(){
-        for(let x = 0; x <= this.markers ;x++){
+    tickCreation(){
+        for(let x = 0; x <= this.ticks ;x++){
             strokeWeight(1);
-            line(this.markerSize+2, x*-this.markerGap, 0, x*-this.markerGap);
+            line(this.tickSize+2, x*-this.tickGap, 0, x*-this.tickGap);
             
         }
     }
@@ -139,26 +138,15 @@ class StackedBarChart{
     }
 
     chartLabels(){
-        for(let x = 0; x <= this.markers ;x++){
+        for(let x = 0; x <= this.ticks ;x++){
             noStroke();
             fill(1);
             textAlign(LEFT, CENTER);
             textStyle(BOLD);
-            text(int(x*this.LabelGap), -45, x*-this.markerGap);
+            text(int(x*this.LabelGap), -45, x*-this.tickGap);
         }
     }
 
-    // barLabels(){
-    //     let labelSpacing = 10;
-    //     let labelBar = 400/this.bars;
-    //     textSize(10);
-    //     noStroke();
-    //     fill(1);
-    //         for(let x=0; x<this.bars; x++){
-    //             text(this.data.rows[x].obj.total, (x*labelBar)+this.barWidth/2, this.barScaler(this.data.rows[x].obj.total)-labelSpacing);
-    //         }
-
-    // }
-
+    
 
 }

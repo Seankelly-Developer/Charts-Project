@@ -2,6 +2,7 @@ let data;
 let userSelect = ["2022_Sales", "2021_Sales", "2020_Sales"];
 let colors = ["	#ffa700", "	#d600ff", "#7e00b6"
 ];
+let backgroundColor = ["#EAEAEA"];
 const colors2 = [
     "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5", "#2196F3", "#03A9F4", "#00BCD4", 
     "#009688", "#4CAF50", "#8BC34A", "#CDDC39", "#FFEB3B", "#FFC107", "#FF9800", "#FF5722", 
@@ -27,7 +28,9 @@ function preload(){
     drawLegend(userSelect, colors, 800, 300, 10, 16);
 }
 async function setup(){
-    createCanvas(1300,2000);
+    
+    createCanvas(1300,1700);
+    background(backgroundColor);
     angleMode(DEGREES);
     rectMode(CORNER);
 

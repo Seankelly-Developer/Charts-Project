@@ -1,6 +1,6 @@
 class barChart{
 
-    constructor(_posX, _posY, _height, _width, _data, _bars, _barSpace, _markers, _markerSize, _hGrid){
+    constructor(_posX, _posY, _height, _width, _data, _bars, _barSpace, _ticks, _tickSize, _hGrid){
         this.height = _height;
         this.width = _width;
         this.posX = _posX;
@@ -8,12 +8,12 @@ class barChart{
         this.data = _data;
         this.bars = _bars;
         this.barSpace = _barSpace;
-        this.markerSize = _markerSize
-        this.markers = _markers;
+        this.tickSize = _tickSize;
+        this.ticks = _ticks;
         this.leftMargin = 10;
         this.rightMargin = 10;
         this.hGrid = _hGrid
-        this.markerGap = this.height/this.markers;
+        this.tickGap = this.height/this.ticks;
         this.rectWidth = (this.width - (this.leftMargin + this.rightMargin) - ((this.bars - 1)* this.barSpace))/this.bars;
         this.barSpacing = this.rectWidth+this.barSpace;
         this.highestValue = int(this.data.rows[0].obj.Mean);
@@ -26,7 +26,7 @@ class barChart{
         }
         this.highestValue = this.highestValue*1.2;
         console.log(this.highestValue); 
-        this.LabelGap = this.highestValue/this.markers;
+        this.LabelGap = this.highestValue/this.ticks;
         
     }
 
@@ -38,11 +38,11 @@ class barChart{
         this.yAxis();
         this.xAxis();
         this.barChart();
-        this.chartMarkers();
+        this.ticksCreation();
         this.chartLabels();
         this.xAxisGrid();
         this.yAxisGrid();
-        this.rectangleLabels();
+
         pop();
     }
 
@@ -70,12 +70,12 @@ class barChart{
     }
 
 
-    //Methods to draw the markers on the two axis
+    //Methods to draw the ticks on the two axis
     xAxisGrid(){
-        for(let x = 0; x <= this.markers ;x++){
+        for(let x = 0; x <= this.ticks ;x++){
             stroke(150, 5);
             strokeWeight(2);
-            line(this.markerSize, x*-this.markerGap, this.width, x*-this.markerGap)
+            line(this.tickSize, x*-this.tickGap, this.width, x*-this.tickGap)
         }
         
     }
@@ -115,33 +115,25 @@ class barChart{
 
     }
     
-    chartMarkers(){
-        for(let x = 0; x <= this.markers ;x++){
+    ticksCreation(){
+        for(let x = 0; x <= this.ticks ;x++){
             strokeWeight(1);
-            line(this.markerSize+2, x*-this.markerGap, 0, x*-this.markerGap);
+            line(this.tickSize+2, x*-this.tickGap, 0, x*-this.tickGap);
             
         }
     }
 
 
     chartLabels(){
-        for(let x = 0; x <= this.markers ;x++){
+        for(let x = 0; x <= this.ticks ;x++){
             noStroke();
             fill(1);
             textAlign(LEFT, CENTER);
             textStyle(BOLD);
-            text(int(x*this.LabelGap), -45, x*-this.markerGap);
+            text(int(x*this.LabelGap), -45, x*-this.tickGap);
         }
     }
 
-    
-
-
-    //Methods to put labels above the bars and also on the X axis
-    rectangleLabels(){
-        
-            
-    }
 
 
     xAxisLabels(){
