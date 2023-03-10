@@ -138,8 +138,6 @@ class LineGraph{
         }
       }
       
-
-
       chartLabels() {
         noStroke();
         fill(1);
@@ -150,16 +148,6 @@ class LineGraph{
           text(int(x * this.LabelGap), -this.markerSize - 10, yPos);
         }
       }
-      
-    
-
-
-    //Methods to put labels above the bars and also on the X axis
-    rectangleLabels(){
-        
-            
-    }
-
 
     xAxisLabels(){
         for(let x = 0; x<this.bars; x++){

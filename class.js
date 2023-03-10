@@ -27,7 +27,7 @@ function preload(){
     drawLegend(userSelect, colors, 800, 300, 10, 16);
 }
 async function setup(){
-    createCanvas(1300,3000);
+    createCanvas(1300,2000);
     angleMode(DEGREES);
     rectMode(CORNER);
 
@@ -71,7 +71,7 @@ function draw(){
     drawTitle("Bar Chart to display average sales of each car make across 3 years", 300, 50, 12, "black");
 
     drawTitle("Total sales of each car make across 3 years including dots to represent the Average sales per year", 300, 600, 12, "black");
-    
+
     drawTitle("Horizontal Bar Chart to display 2022 sales of each car make", 880, 600, 12, "black");
 
     drawTitle("Horizontal Stacked Chart to display sales of each car make for 3 years", 880, 1150, 12, "black");
