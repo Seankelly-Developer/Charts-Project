@@ -96,12 +96,16 @@ class HorizontalBarChart{
         
         for(let x = 0; x<this.bars; x++){
             
-            let color = random(colors2);
+            let color;
+            for(let x = 0; x<this.bars; x++){
+                color = colors3[x];
+            
+
             //Code below removes used colors from the array in order to prevent repeating colors.
-            let index = colors2.indexOf(color);
-            if (index > -1) { // only splice array when item is found
-                colors2.splice(index, 1); // 2nd parameter means remove one item only
-              }
+            // let index = colors2.indexOf(color);
+            // if (index > -1) { // only splice array when item is found
+            //     colors2.splice(index, 1); // 2nd parameter means remove one item only
+            //   }
             push();
             rotate(-270);
             translate(this.leftMargin + (x*this.barSpacing), 0);
@@ -112,7 +116,7 @@ class HorizontalBarChart{
             pop();
             }
 
-    
+        }
     }
     
     chartMarkers(){
