@@ -38,8 +38,8 @@ class HorizontalStackedChart{
         this.horStackedChart();
         this.tickCreation();
         this.chartLabels();
-        this.xAxisGrid();
-        this.yAxisGrid();
+        // this.xAxisGrid();
+        // this.yAxisGrid();
         this.xAxisLabels();
         this.yAxisLabels();
         pop();

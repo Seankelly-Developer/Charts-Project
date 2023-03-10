@@ -2,7 +2,7 @@
 class LineGraph {
 
     // Constructor for the LineGraph class
-    constructor(_posX, _posY, _height, _width, _data, _bars, _barSpace, _markers, _markerSize, _hGrid) {
+    constructor(_posX, _posY, _height, _width, _data, _bars, _barSpace, _ticks, _tickSize, _hGrid) {
       
       // Set the height and width of the graph
       this.height = _height;
@@ -12,21 +12,22 @@ class LineGraph {
       this.posX = _posX;
       this.posY = _posY;
       
-      // Set the data to be plotted on the graph, the number of bars, the space between bars, the number of markers,
-      // the size of the markers, and the number of horizontal grid lines
+      // Set the data to be plotted on the graph, the number of bars, the space between bars, the number of ticks,
+      // the size of the ticks, and the number of horizontal grid lines
       this.data = _data;
       this.bars = _bars;
       this.barSpace = _barSpace;
-      this.markerSize = _markerSize;
-      this.markers = _markers;
+      this.ticks = _ticks;
+      this.tickSize = _tickSize;
+      
       this.hGrid = _hGrid;
       
       // Set some additional properties of the graph, such as the left and right margins
       this.leftMargin = 10;
       this.rightMargin = 10;
       
-      // Calculate the gap between markers and the width of each bar on the graph
-      this.markerGap = this.height / this.markers;
+      // Calculate the gap between ticks and the width of each bar on the graph
+      this.tickGap = this.height / this.ticks;
       this.rectWidth = (this.width - (this.leftMargin + this.rightMargin) - ((this.bars - 1) * this.barSpace)) / this.bars;
       this.barSpacing = this.rectWidth + this.barSpace;
       
@@ -43,7 +44,7 @@ class LineGraph {
       this.highestValue = this.highestValue * 1.2;
       
       // Calculate the gap between labels on the y-axis of the graph
-      this.LabelGap = this.highestValue / this.markers;
+      this.LabelGap = this.highestValue / this.ticks;
     }
   
     // Render the LineGraph on the canvas
@@ -62,7 +63,7 @@ class LineGraph {
       this.xAxisGrid();
       this.yAxisGrid();
       this.lineGraph();
-      this.chartMarkers();
+      this.tickCreation();
       this.chartLabels();
       
       // Restore the previous transformation matrix
@@ -127,24 +128,23 @@ class LineGraph {
         endShape();
       }
       
-    
-      chartMarkers() {
-        noStroke();
-        fill(150, 5);
-        for(let x = 0; x <= this.markers; x++) {
-          let yPos = x * -this.markerGap;
-          ellipse(this.markerSize + 2, yPos, 5, 5);
+    tickCreation(){
+        for(let x = 0; x <= this.ticks ;x++){
+            strokeWeight(1);
+            line(this.tickSize+2, x*-this.tickGap, 0, x*-this.tickGap);
+            
         }
-      }
+    }
+      
       
       chartLabels() {
         noStroke();
         fill(1);
         textAlign(RIGHT, CENTER);
         textStyle(BOLD);
-        for(let x = 0; x <= this.markers; x++) {
-          let yPos = x * -this.markerGap;
-          text(int(x * this.LabelGap), -this.markerSize - 10, yPos);
+        for(let x = 0; x <= this.ticks; x++) {
+          let yPos = x * -this.tickGap;
+          text(int(x * this.LabelGap), -this.tickSize - 10, yPos);
         }
       }
 
