@@ -23,7 +23,7 @@ async function setup(){
     rectMode(CORNER);
 
      //Bar Chart
-     graphs.push(new barChart(100, 500, 400, 400, data, data.getRowCount(), 10, 10, -5, 5, "Bar Chart"));
+     graphs.push(new barChart(100, 500, 400, 400, data, data.getRowCount(), 10, 10, -5, 5, "Label Example", "Label Example"));
 
      //Stacked Chart
      graphs.push(new StackedBarChart(700, 500, 400, 400, data, data.getRowCount(), 10, 10, -5, 5));

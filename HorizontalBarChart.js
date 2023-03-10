@@ -33,11 +33,7 @@ class HorizontalBarChart{
 
         this.LabelGap = this.highestValue/this.ticks;
     }
-
     
-
-    
-
     render(){
         push();
         translate(this.posX, this.posY);

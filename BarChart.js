@@ -2,7 +2,9 @@
 class barChart{
 
     // Constructor function that initializes the properties of the bar chart
-    constructor(_posX, _posY, _height, _width, _data, _bars, _barSpace, _ticks, _tickSize, _hGrid){
+    constructor(_posX, _posY, _height, _width, _data, _bars, _barSpace, _ticks, _tickSize, _hGrid, _xAxisLabel, _yAxisLabel){
+        this.xAxisLabel = _xAxisLabel; // x-axis label
+        this.yAxisLabel = _yAxisLabel; // y-axis label
         this.height = _height; // Height of the chart
         this.width = _width; // Width of the chart
         this.posX = _posX; // x-coordinate of the chart's position
@@ -64,6 +66,12 @@ class barChart{
         // Draw the vertical grid lines
         this.yAxisGrid();
 
+        // Draw the x-axis label
+        this.drawXAxisLabel();
+
+        // Draw the y-axis label
+        this.drawYAxisLabel();
+
         pop();
     }
 
@@ -108,6 +116,23 @@ class barChart{
             line(x*this.width/this.numHgrid, -this.height, x*this.width/this.numHgrid, 0)
         }
     }
+
+    drawXAxisLabel(){
+        textAlign(CENTER);
+        textSize(12);
+        text(this.xAxisLabel, this.width/2, 40);
+    }
+    
+    drawYAxisLabel(){
+        textAlign(CENTER);
+        textSize(12);
+        push();
+        translate(-70, -this.height/2);
+        rotate(-90);
+        text(this.yAxisLabel, 0, 0);
+        pop();
+    }
+    
     //Draw the bar chart
     barChart(){
         
