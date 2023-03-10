@@ -105,12 +105,6 @@ class linedBarChart{
             color = colors3[x];
         
         
-        //Code below removes used colors from the array in order to prevent repeating colors.
-
-        // let index = colors2.indexOf(color);
-        // if (index > -1) { // only splice array when item is found
-        //     colors2.splice(index, 1); // 2nd parameter means remove one item only
-        //   }
         push();
        
         translate(this.leftMargin + (x*this.barSpacing), 0);
@@ -144,10 +138,6 @@ class linedBarChart{
         }
     }
 
-    
-
-
-    
 
     xAxisLabels(){
         for(let x = 0; x<this.bars; x++){
@@ -167,10 +157,7 @@ class linedBarChart{
         noStroke();
         for(let x = 0; x<this.bars; x++){
             let color = 0;
-            // let index = colors2.indexOf(color);
-            // if (index > -1) { // only splice array when item is found
-            //     colors2.splice(index, 1); // 2nd parameter means remove one item only
-            // }
+            
             let mean = this.data.rows[x].obj.Mean;
             let scaledMean = this.barScaler(int(-mean));
             let barHeight = this.barScaler(int(-this.data.rows[x].obj.Total));

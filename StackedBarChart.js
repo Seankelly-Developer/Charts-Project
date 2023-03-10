@@ -1,3 +1,5 @@
+
+
 class StackedBarChart{
 
     constructor(_posX, _posY, _height, _width, _data, _bars, _barGap, _ticks, _tickSize, _hGrid){
@@ -15,7 +17,7 @@ class StackedBarChart{
         this.ticks = _ticks;
         this.leftMargin = 10;
         this.rightMargin = 10;  
-        this.hGrid = _hGrid
+        this.hGrid = _hGrid;
 
         // calculate properties based on constructor parameters
         this.tickGap = this.height/this.ticks;
@@ -49,6 +51,8 @@ class StackedBarChart{
         this.xAxisGrid();
         this.yAxisGrid();
         this.xAxisLabels();
+        this.drawMeanDots();
+        this.connectMeanDots();
         pop();
     }
 
@@ -151,6 +155,35 @@ class StackedBarChart{
         }
     }
 
+    // draw black dots for mean values
+drawMeanDots() {
+    push();
+    stroke(0);
+    strokeWeight(1);
+    for (let i = 0; i < this.bars; i++) {
+      let x = this.leftMargin + this.barSpacing * i + this.barWidth / 2;
+      let y = -this.barScaler(this.data.rows[i].obj.Mean);
+      ellipse(x, y, 4);
+    }
+    pop();
+  }
+  
+  // connect black dots for mean values
+  connectMeanDots() {
+    push();
+    stroke(0);
+    strokeWeight(1);
+    noFill();
+    beginShape();
+    for (let i = 0; i < this.bars; i++) {
+      let x = this.leftMargin + this.barSpacing * i + this.barWidth / 2;
+      let y = -this.barScaler(this.data.rows[i].obj.Mean);
+      vertex(x, y);
+    }
+    endShape();
+    pop();
+  }
+  
     
 
 }
