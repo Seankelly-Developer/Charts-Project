@@ -163,7 +163,7 @@ drawMeanDots() {
     for (let i = 0; i < this.bars; i++) {
       let x = this.leftMargin + this.barSpacing * i + this.barWidth / 2;
       let y = -this.barScaler(this.data.rows[i].obj.Mean);
-      ellipse(x, y, 4);
+      ellipse(x, y, 6);
     }
     pop();
   }
