@@ -119,7 +119,6 @@ class LineGraph {
       strokeWeight(2);
       let color = 0;
       stroke(color);
-      beginShape();
       for (let x = 0; x < this.bars; x++) {
         let prop = "Mean";
         let xPos = this.leftMargin + (x * this.barSpacing) + (this.rectWidth / 2);
@@ -128,11 +127,19 @@ class LineGraph {
         // add a black dot at each data point
         noFill();
         stroke(0);
-        point(xPos, yPos);
-        
-        vertex(xPos, yPos);
+        ellipse(xPos, yPos, 5, 5);
+    
+        // connect the data points with a line
+        if (x === 0) {
+          beginShape();
+          vertex(xPos, yPos);
+        } else {
+          vertex(xPos, yPos);
+          if (x === this.bars - 1) {
+            endShape();
+          }
+        }
       }
-      endShape();
     }
       
     tickCreation(){
