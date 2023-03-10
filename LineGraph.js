@@ -115,19 +115,25 @@ class LineGraph {
     }
     
     lineGraph() {
+      noFill();
+      strokeWeight(2);
+      let color = 0;
+      stroke(color);
+      beginShape();
+      for (let x = 0; x < this.bars; x++) {
+        let prop = "Mean";
+        let xPos = this.leftMargin + (x * this.barSpacing) + (this.rectWidth / 2);
+        let yPos = -this.barScaler(int(this.data.rows[x].obj[prop]));
+        
+        // add a black dot at each data point
         noFill();
-        strokeWeight(2);
-        let color = 0;
-        stroke(color);
-        beginShape();
-        for(let x = 0; x < this.bars; x++) {
-          let prop = "Mean";
-          let xPos = this.leftMargin + (x * this.barSpacing) + (this.rectWidth / 2);
-          let yPos = -this.barScaler(int(this.data.rows[x].obj[prop]));
-          vertex(xPos, yPos);
-        }
-        endShape();
+        stroke(0);
+        point(xPos, yPos);
+        
+        vertex(xPos, yPos);
       }
+      endShape();
+    }
       
     tickCreation(){
         for(let x = 0; x <= this.ticks ;x++){

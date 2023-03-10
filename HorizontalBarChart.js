@@ -26,10 +26,15 @@ class HorizontalBarChart{
                 this.highestValue = value;
             }
         }
+
+        //Always spreads out the labels larger than the highest value to make the graph easily digestable - 1.4 is sufficient. 
+
         this.highestValue = this.highestValue*1.4;
-        console.log(this.highestValue);
+
         this.LabelGap = this.highestValue/this.markers;
     }
+
+    
 
     
 

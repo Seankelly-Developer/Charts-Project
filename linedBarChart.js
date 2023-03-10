@@ -46,7 +46,6 @@ class linedBarChart{
         this.chartLabels();
         this.xAxisGrid();
         this.yAxisGrid();
-        this.rectangleLabels();
         this.drawMeanDots();
         this.connectMeanDots();
         pop();
@@ -148,12 +147,7 @@ class linedBarChart{
     
 
 
-    //Methods to put labels above the bars and also on the X axis
-    rectangleLabels(){
-        
-            
-    }
-
+    
 
     xAxisLabels(){
         for(let x = 0; x<this.bars; x++){
