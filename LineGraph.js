@@ -2,7 +2,10 @@
 class LineGraph {
 
   // Constructor for the LineGraph class
-  constructor(_posX, _posY, _height, _width, _data, _bars, _barSpace, _ticks, _tickSize, _hGrid) {
+  constructor(_posX, _posY, _height, _width, _data, _bars, _barSpace, _ticks, _tickSize, _hGrid, _xAxisLabel, _yAxisLabel) {
+
+    this.xAxisLabel = _xAxisLabel; // x-axis label
+    this.yAxisLabel = _yAxisLabel; // y-axis label
     
     // Set the height and width of the graph
     this.height = _height;
@@ -56,6 +59,12 @@ class LineGraph {
     // Translate to the position of the graph on the canvas
     translate(this.posX, this.posY);
     
+    // Draw the x-axis label
+    this.drawXAxisLabel();
+
+    // Draw the y-axis label
+    this.drawYAxisLabel();
+
     // Call various methods to draw the different parts of the graph
     this.xAxisLabels();
     this.yAxis();
@@ -173,6 +182,23 @@ class LineGraph {
           text(this.data.rows[x].obj.Make, -22, 20);
           pop();
       }
+  }
+  drawXAxisLabel(){
+    textAlign(CENTER);
+    textSize(12);
+    textStyle(BOLD);
+    text(this.xAxisLabel, this.width/2, 50);
+  }
+
+  drawYAxisLabel(){
+      textAlign(CENTER);
+      textSize(12);
+      push();
+      translate(-65, -this.height/2);
+      rotate(-90);
+      textStyle(BOLD);
+      text(this.yAxisLabel, 0, 0);
+      pop();
   }
     
 

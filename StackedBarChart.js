@@ -2,11 +2,13 @@
 
 class StackedBarChart{
 
-    constructor(_posX, _posY, _height, _width, _data, _bars, _barGap, _ticks, _tickSize, _hGrid){
+    constructor(_posX, _posY, _height, _width, _data, _bars, _barGap, _ticks, _tickSize, _hGrid, _xAxisLabel, _yAxisLabel){
         // constructor method that initializes the StackedBarChart object with the given parameters
 
         // initialize properties with constructor parameters
         this.height = _height;
+        this.xAxisLabel = _xAxisLabel; // x-axis label
+        this.yAxisLabel = _yAxisLabel; // y-axis label
         this.width = _width;
         this.posX = _posX;
         this.posY = _posY;
@@ -53,9 +55,32 @@ class StackedBarChart{
         this.xAxisLabels();
         this.drawMeanDots();
         this.connectMeanDots();
+
+        // Draw the x-axis label
+        this.drawXAxisLabel();
+
+        // Draw the y-axis label
+        this.drawYAxisLabel();
         pop();
     }
 
+
+    drawXAxisLabel(){
+        textAlign(CENTER);
+        textSize(12);
+        text(this.xAxisLabel, this.width/2, 40);
+    }
+    
+    drawYAxisLabel(){
+        textAlign(CENTER);
+        textSize(12);
+        push();
+        translate(-70, -this.height/2);
+        rotate(-90);
+        text(this.yAxisLabel, 0, 0);
+        pop();
+    }
+    
     // scale the given number based on the height and highest value of the StackedBarChart object
     barScaler(_scalingNum){
         let scaleValue = this.height/this.highestValue;

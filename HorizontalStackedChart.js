@@ -1,7 +1,9 @@
 class HorizontalStackedChart{
 
-    constructor(_posX, _posY, _height, _width, _data, _bars, _barGap, _ticks, _tickSize, _hGrid){
+    constructor(_posX, _posY, _height, _width, _data, _bars, _barGap, _ticks, _tickSize, _hGrid, _xAxisLabel, _yAxisLabel){
 
+        this.xAxisLabel = _xAxisLabel; // x-axis label
+        this.yAxisLabel = _yAxisLabel; // y-axis label
         this.height = _height;
         this.width = _width;
         this.posX = _posX;
@@ -42,6 +44,11 @@ class HorizontalStackedChart{
         // this.yAxisGrid();
         this.xAxisLabels();
         this.yAxisLabels();
+        // Draw the x-axis label
+        this.drawXAxisLabel();
+
+        // Draw the y-axis label
+        this.drawYAxisLabel();
         pop();
     }
 
@@ -172,17 +179,23 @@ chartLabels(){
     
 }
 
-    // barLabels(){
-    //     let labelSpacing = 10;
-    //     let labelBar = 400/this.bars;
-    //     textSize(10);
-    //     noStroke();
-    //     fill(1);
-    //         for(let x=0; x<this.bars; x++){
-    //             text(this.data.rows[x].obj.total, (x*labelBar)+this.barWidth/2, this.barScaler(this.data.rows[x].obj.total)-labelSpacing);
-    //         }
+drawXAxisLabel(){
+    textAlign(CENTER);
+    textSize(12);
+    textStyle(BOLD);
+    text(this.xAxisLabel, this.width/2, 50);
+}
 
-    // }
+drawYAxisLabel(){
+    textAlign(CENTER);
+    textSize(12);
+    push();
+    translate(-80, -this.height/2);
+    rotate(-90);
+    textStyle(BOLD);
+    text(this.yAxisLabel, 0, 0);
+    pop();
+}
 
 
 }

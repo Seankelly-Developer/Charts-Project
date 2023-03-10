@@ -1,7 +1,9 @@
 class HorizontalBarChart{
     
-    constructor(_posX, _posY, _height, _width, _data, _bars, _barSpace, _ticks, _tickSize, _hGrid){
+    constructor(_posX, _posY, _height, _width, _data, _bars, _barSpace, _ticks, _tickSize, _hGrid, _xAxisLabel, _yAxisLabel){
 
+        this.xAxisLabel = _xAxisLabel; // x-axis label
+        this.yAxisLabel = _yAxisLabel; // y-axis label
         this.height = _height;
         this.width = _width;
         this.posX = _posX;
@@ -46,6 +48,12 @@ class HorizontalBarChart{
         this.xAxisGrid();
         this.yAxisGrid();
         this.yAxisLabels();
+        // Draw the x-axis label
+        this.drawXAxisLabel();
+
+        // Draw the y-axis label
+        this.drawYAxisLabel();
+
         pop();
     }
 
@@ -179,6 +187,23 @@ class HorizontalBarChart{
                 pop();
             }
         
+    }
+    drawXAxisLabel(){
+        textAlign(CENTER);
+        textSize(12);
+        textStyle(BOLD);
+        text(this.xAxisLabel, this.width/2, 50);
+    }
+    
+    drawYAxisLabel(){
+        textAlign(CENTER);
+        textSize(12);
+        push();
+        translate(-80, -this.height/2);
+        rotate(-90);
+        textStyle(BOLD);
+        text(this.yAxisLabel, 0, 0);
+        pop();
     }
 
 }

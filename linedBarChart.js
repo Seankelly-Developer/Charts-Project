@@ -1,6 +1,8 @@
 class linedBarChart{
 
-    constructor(_posX, _posY, _height, _width, _data, _bars, _barSpace, _markers, _markerSize, _hGrid){
+    constructor(_posX, _posY, _height, _width, _data, _bars, _barSpace, _markers, _markerSize, _hGrid, _xAxisLabel, _yAxisLabel){
+        this.xAxisLabel = _xAxisLabel; // x-axis label
+        this.yAxisLabel = _yAxisLabel; // y-axis label
         this.height = _height;
         this.width = _width;
         this.posX = _posX;
@@ -48,8 +50,16 @@ class linedBarChart{
         this.yAxisGrid();
         this.drawMeanDots();
         this.connectMeanDots();
+
+        // Draw the x-axis label
+        this.drawXAxisLabel();
+
+        // Draw the y-axis label
+        this.drawYAxisLabel();
         pop();
     }
+
+    
 
     //This method ensures the graph is to scale - based on the number of bars
     barScaler(_scalingNum){
@@ -136,6 +146,28 @@ class linedBarChart{
             textStyle(BOLD);
             text(int(x*this.LabelGap), -60, x*-this.markerGap);
         }
+    }
+
+    drawXAxisLabel(){
+        textAlign(CENTER);
+        textSize(12);
+        fill(0);
+        noStroke();
+        textStyle(BOLD);
+        text(this.xAxisLabel, this.width/2, 50);
+    }
+    
+    drawYAxisLabel(){
+        textAlign(CENTER);
+        textSize(12);
+        push();
+        translate(-80, -this.height/2);
+        rotate(-90);
+        fill(0);
+        noStroke();
+        textStyle(BOLD);
+        text(this.yAxisLabel, 0, 0);
+        pop();
     }
 
 
