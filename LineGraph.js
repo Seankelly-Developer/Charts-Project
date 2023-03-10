@@ -96,6 +96,7 @@ class LineGraph {
 
 
 
+<<<<<<< HEAD
   // method to draw the x-axis grid lines
   xAxisGrid(){
       for(let x = 0; x <= this.ticks ;x++){
@@ -139,6 +140,60 @@ class LineGraph {
           endShape();
         }
       }
+=======
+    // method to draw the x-axis grid lines
+    xAxisGrid(){
+        for(let x = 0; x <= this.ticks ;x++){
+            stroke(50, 30);
+            strokeWeight(1);
+            line(this.tickSize, x*-this.tickGap, this.width, x*-this.tickGap)
+        }   
+    }
+      
+    // method to draw the y-axis grid lines
+    yAxisGrid(){
+        for(let x = 0; x <= this.numHgrid ;x++){
+            stroke(50, 30);
+            strokeWeight(1);
+            line(x*this.width/this.numHgrid, -this.height, x*this.width/this.numHgrid, 0)
+        }
+    }
+    
+    lineGraph() {
+      noFill();
+      strokeWeight(2);
+      let color = 0;
+      stroke(color);
+      for (let x = 0; x < this.bars; x++) {
+        let prop = "Mean";
+        let xPos = this.leftMargin + (x * this.barSpacing) + (this.rectWidth / 2);
+        let yPos = -this.barScaler(int(this.data.rows[x].obj[prop]));
+        
+        // add a black dot at each data point
+        noFill();
+        stroke(0);
+        ellipse(xPos, yPos, 5, 5);
+    
+        // connect the data points with a line
+        if (x === 0) {
+          beginShape();
+          vertex(xPos, yPos);
+        } else {
+          vertex(xPos, yPos);
+          if (x === this.bars - 1) {
+            endShape();
+          }
+        }
+      }
+    }
+      
+    tickCreation(){
+        for(let x = 0; x <= this.ticks ;x++){
+            strokeWeight(1);
+            line(this.tickSize+2, x*-this.tickGap, 0, x*-this.tickGap);
+            
+        }
+>>>>>>> e6d661ca508266bc8d5c737f3e431bb5827549a3
     }
   }
     

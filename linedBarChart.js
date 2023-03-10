@@ -46,7 +46,6 @@ class linedBarChart{
         this.chartLabels();
         this.xAxisGrid();
         this.yAxisGrid();
-        this.rectangleLabels();
         this.drawMeanDots();
         this.connectMeanDots();
         pop();
@@ -100,15 +99,18 @@ class linedBarChart{
         
 
         for(let x = 0; x<this.bars; x++){
-            
-        let color = random(colors2);
+            let color = 0;
+    
+        for(let x = 0; x<this.bars; x++){
+            color = colors3[x];
+        
         
         //Code below removes used colors from the array in order to prevent repeating colors.
 
-        let index = colors2.indexOf(color);
-        if (index > -1) { // only splice array when item is found
-            colors2.splice(index, 1); // 2nd parameter means remove one item only
-          }
+        // let index = colors2.indexOf(color);
+        // if (index > -1) { // only splice array when item is found
+        //     colors2.splice(index, 1); // 2nd parameter means remove one item only
+        //   }
         push();
        
         translate(this.leftMargin + (x*this.barSpacing), 0);
@@ -119,7 +121,7 @@ class linedBarChart{
         rect(0, 0,this.rectWidth,this.barScaler(int(-this.data.rows[x].obj[prop])));
         pop();
         }
-        
+    }
 
     }
     
@@ -145,12 +147,7 @@ class linedBarChart{
     
 
 
-    //Methods to put labels above the bars and also on the X axis
-    rectangleLabels(){
-        
-            
-    }
-
+    
 
     xAxisLabels(){
         for(let x = 0; x<this.bars; x++){
@@ -170,10 +167,10 @@ class linedBarChart{
         noStroke();
         for(let x = 0; x<this.bars; x++){
             let color = 0;
-            let index = colors2.indexOf(color);
-            if (index > -1) { // only splice array when item is found
-                colors2.splice(index, 1); // 2nd parameter means remove one item only
-            }
+            // let index = colors2.indexOf(color);
+            // if (index > -1) { // only splice array when item is found
+            //     colors2.splice(index, 1); // 2nd parameter means remove one item only
+            // }
             let mean = this.data.rows[x].obj.Mean;
             let scaledMean = this.barScaler(int(-mean));
             let barHeight = this.barScaler(int(-this.data.rows[x].obj.Total));
@@ -193,11 +190,7 @@ class linedBarChart{
         noFill();
         beginShape();
         for(let x = 0; x<this.bars; x++){
-            let color = random(colors2);
-            let index = colors2.indexOf(color);
-            if (index > -1) { // only splice array when item is found
-                colors2.splice(index, 1); // 2nd parameter means remove one item only
-            }
+            
             let mean = this.data.rows[x].obj.Mean;
             let scaledMean = this.barScaler(int(-mean));
             let barHeight = this.barScaler(int(-this.data.rows[x].obj.Total));
