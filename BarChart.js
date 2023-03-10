@@ -1,52 +1,73 @@
+// Class for creating a bar chart in p5.js
 class barChart{
 
+    // Constructor function that initializes the properties of the bar chart
     constructor(_posX, _posY, _height, _width, _data, _bars, _barSpace, _ticks, _tickSize, _hGrid){
-        this.height = _height;
-        this.width = _width;
-        this.posX = _posX;
-        this.posY = _posY;
-        this.data = _data;
-        this.bars = _bars;
-        this.barSpace = _barSpace;
-        this.tickSize = _tickSize;
-        this.ticks = _ticks;
-        this.leftMargin = 10;
-        this.rightMargin = 10;
-        this.hGrid = _hGrid
-        this.tickGap = this.height/this.ticks;
-        this.rectWidth = (this.width - (this.leftMargin + this.rightMargin) - ((this.bars - 1)* this.barSpace))/this.bars;
-        this.barSpacing = this.rectWidth+this.barSpace;
-        this.highestValue = int(this.data.rows[0].obj.Mean);
-    
+        this.height = _height; // Height of the chart
+        this.width = _width; // Width of the chart
+        this.posX = _posX; // x-coordinate of the chart's position
+        this.posY = _posY; // y-coordinate of the chart's position
+        this.data = _data; // Data for the chart
+        this.bars = _bars; // Number of bars in the chart
+        this.barSpace = _barSpace; // Space between the bars
+        this.tickSize = _tickSize; // Size of the ticks on the y-axis
+        this.ticks = _ticks; // Number of ticks on the y-axis
+        this.leftMargin = 10; // Margin on the left side of the chart
+        this.rightMargin = 10; // Margin on the right side of the chart
+        this.hGrid = _hGrid // Number of horizontal grid lines
+        this.tickGap = this.height/this.ticks; // Gap between ticks on the y-axis
+        this.rectWidth = (this.width - (this.leftMargin + this.rightMargin) - ((this.bars - 1)* this.barSpace))/this.bars; // Width of each bar
+        this.barSpacing = this.rectWidth+this.barSpace; // Space between each bar
+        this.highestValue = int(this.data.rows[0].obj.Mean); // Highest value in the data set
+
+        // Loop through the data set to find the highest value
         for (let i = 1; i < this.bars; i++) {
             let value = int(this.data.rows[i].obj.Mean);
             if (value > this.highestValue) {
                 this.highestValue = value;
             }
         }
+
+        // Scale the highest value by 1.2 to make sure the bars fit within the chart
         this.highestValue = this.highestValue*1.2;
-        console.log(this.highestValue); 
+
+        // Gap between the labels on the y-axis
         this.LabelGap = this.highestValue/this.ticks;
-        
     }
 
+    // Method to render the chart
     render(){
-    
         push();
         translate(this.posX, this.posY);
+
+        // Draw the x-axis labels
         this.xAxisLabels();
+
+        // Draw the y-axis
         this.yAxis();
+
+        // Draw the x-axis
         this.xAxis();
+
+        // Draw the bars
         this.barChart();
+
+        // Draw the ticks on the y-axis
         this.ticksCreation();
+
+        // Draw the labels on the chart
         this.chartLabels();
+
+        // Draw the horizontal grid lines
         this.xAxisGrid();
+
+        // Draw the vertical grid lines
         this.yAxisGrid();
 
         pop();
     }
 
-    //This method ensures the graph is to scale - based on the number of bars
+    // Method to scale the bars based on a scaling factor
     barScaler(_scalingNum){
         for(let x = 0; x < this.bars; x++){
             let scaleValue = this.height/this.highestValue;
@@ -54,8 +75,7 @@ class barChart{
         }
     }
 
-
-    //Methods to draw the two axis
+    // Method to draw the x-axis
     xAxis(){
         noFill();
         strokeWeight(1);
@@ -70,23 +90,24 @@ class barChart{
     }
 
 
-    //Methods to draw the ticks on the two axis
+
+    // method to draw the x-axis grid lines
     xAxisGrid(){
         for(let x = 0; x <= this.ticks ;x++){
-            stroke(150, 5);
-            strokeWeight(2);
+            stroke(50, 30);
+            strokeWeight(1);
             line(this.tickSize, x*-this.tickGap, this.width, x*-this.tickGap)
-        }
-        
+        }   
     }
+      
+    // method to draw the y-axis grid lines
     yAxisGrid(){
         for(let x = 0; x <= this.numHgrid ;x++){
-            stroke(150, 5);
-            strokeWeight(2);
+            stroke(50, 30);
+            strokeWeight(1);
             line(x*this.width/this.numHgrid, -this.height, x*this.width/this.numHgrid, 0)
         }
     }
-
     //Draw the bar chart
     barChart(){
         

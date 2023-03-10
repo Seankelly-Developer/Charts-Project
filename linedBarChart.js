@@ -76,19 +76,21 @@ class linedBarChart{
     }
 
 
-    //Methods to draw the markers on the two axis
+    
+    // method to draw the x-axis grid lines
     xAxisGrid(){
-        for(let x = 0; x <= this.markers ;x++){
-            stroke(150, 5);
-            strokeWeight(2);
-            line(this.markerSize, x*-this.markerGap, this.width, x*-this.markerGap)
-        }
-        
+        for(let x = 0; x <= this.ticks ;x++){
+            stroke(50, 30);
+            strokeWeight(1);
+            line(this.tickSize, x*-this.tickGap, this.width, x*-this.tickGap)
+        }   
     }
+      
+    // method to draw the y-axis grid lines
     yAxisGrid(){
         for(let x = 0; x <= this.numHgrid ;x++){
-            stroke(150, 5);
-            strokeWeight(2);
+            stroke(50, 30);
+            strokeWeight(1);
             line(x*this.width/this.numHgrid, -this.height, x*this.width/this.numHgrid, 0)
         }
     }

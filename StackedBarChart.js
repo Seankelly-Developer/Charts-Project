@@ -1,7 +1,9 @@
 class StackedBarChart{
 
     constructor(_posX, _posY, _height, _width, _data, _bars, _barGap, _ticks, _tickSize, _hGrid){
+        // constructor method that initializes the StackedBarChart object with the given parameters
 
+        // initialize properties with constructor parameters
         this.height = _height;
         this.width = _width;
         this.posX = _posX;
@@ -14,23 +16,28 @@ class StackedBarChart{
         this.leftMargin = 10;
         this.rightMargin = 10;  
         this.hGrid = _hGrid
+
+        // calculate properties based on constructor parameters
         this.tickGap = this.height/this.ticks;
         this.barWidth = (this.width - (this.leftMargin + this.rightMargin) - ((this.bars - 1)* this.barGap))/this.bars;
         this.barSpacing = this.barWidth+this.barGap;
         this.highestValue = int(this.data.rows[0].obj.Total);
-    
+        
+        // find the highest value in the data
         for (let i = 1; i < this.bars; i++) {
             let value = int(this.data.rows[i].obj.Total);
             if (value > this.highestValue) {
                 this.highestValue = value;
             }
         }
+        // set highest value to be 20% higher than the actual highest value for scale purposes
         this.highestValue = this.highestValue*1.2;
 
+        // calculate tick label gaps based on highest value and number of ticks
         this.LabelGap = this.highestValue/this.ticks;
     }
 
-    // executes the functions
+    // execute all required methods to render the StackedBarChart object
     render(){
         push();
         translate(this.posX, this.posY);
@@ -45,22 +52,21 @@ class StackedBarChart{
         pop();
     }
 
-    //This method ensures the graph is to scale - based on the number of bars
+    // scale the given number based on the height and highest value of the StackedBarChart object
     barScaler(_scalingNum){
-        
-            let scaleValue = this.height/this.highestValue;
-            return _scalingNum*scaleValue;
-        
+        let scaleValue = this.height/this.highestValue;
+        return _scalingNum*scaleValue;
     }
 
-
-    //Methods to draw the two axis
+    // method to draw the x-axis line
     xAxis(){
         noFill();
         strokeWeight(1);
         stroke(0);
         line(0,0,this.width,0);
     }
+
+    // method to draw the y-axis line
     yAxis(){
         noFill();
         strokeWeight(1);
@@ -68,22 +74,20 @@ class StackedBarChart{
         line(0,0,0,-this.height);
     }
 
-
-    //Methods to draw the ticks on the two axis
+    // method to draw the x-axis grid lines
     xAxisGrid(){
         for(let x = 0; x <= this.ticks ;x++){
-            stroke(150, 5);
-            strokeWeight(2);
+            stroke(50, 30);
+            strokeWeight(1);
             line(this.tickSize, x*-this.tickGap, this.width, x*-this.tickGap)
-        }
-        
+        }   
     }
-    
       
+    // method to draw the y-axis grid lines
     yAxisGrid(){
         for(let x = 0; x <= this.numHgrid ;x++){
-            stroke(150, 5);
-            strokeWeight(2);
+            stroke(50, 30);
+            strokeWeight(1);
             line(x*this.width/this.numHgrid, -this.height, x*this.width/this.numHgrid, 0)
         }
     }

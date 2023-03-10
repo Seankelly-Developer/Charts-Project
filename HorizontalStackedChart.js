@@ -70,22 +70,23 @@ class HorizontalStackedChart{
 
 
     //Methods to draw the ticks on the two axis
+    // method to draw the x-axis grid lines
     xAxisGrid(){
         for(let x = 0; x <= this.ticks ;x++){
-            stroke(150, 5);
-            strokeWeight(2);
-            line(x*this.tickGap, 0, x*this.tickGap, -this.height)
-        }
-        
+            stroke(50, 30);
+            strokeWeight(1);
+            line(this.tickSize, x*-this.tickGap, this.width, x*-this.tickGap)
+        }   
     }
+      
+    // method to draw the y-axis grid lines
     yAxisGrid(){
         for(let x = 0; x <= this.numHgrid ;x++){
-            stroke(150, 5);
-            strokeWeight(2);
-            line(0, -x*this.height/this.numHgrid, this.width, -x*this.height/this.numHgrid)
+            stroke(50, 30);
+            strokeWeight(1);
+            line(x*this.width/this.numHgrid, -this.height, x*this.width/this.numHgrid, 0)
         }
     }
-
     //Draw the bar chart
     horStackedChart(){
 
