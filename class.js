@@ -6,7 +6,6 @@ let backgroundColor = ["#EAEAEA"];
 
 
   const colors3 = ["	#ffa700", "	#d600ff", "#7e00b6","	#ffa700", "	#d600ff", "#7e00b6","	#ffa700", "	#d600ff", "#7e00b6","	#ffa700", "	#d600ff", "#7e00b6"];
-  
 
 
 //Arrays to store instantiated graph objects

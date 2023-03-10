@@ -173,10 +173,10 @@ class linedBarChart{
         noStroke();
         for(let x = 0; x<this.bars; x++){
             let color = 0;
-            let index = colors2.indexOf(color);
-            if (index > -1) { // only splice array when item is found
-                colors2.splice(index, 1); // 2nd parameter means remove one item only
-            }
+            // let index = colors2.indexOf(color);
+            // if (index > -1) { // only splice array when item is found
+            //     colors2.splice(index, 1); // 2nd parameter means remove one item only
+            // }
             let mean = this.data.rows[x].obj.Mean;
             let scaledMean = this.barScaler(int(-mean));
             let barHeight = this.barScaler(int(-this.data.rows[x].obj.Total));
@@ -196,11 +196,7 @@ class linedBarChart{
         noFill();
         beginShape();
         for(let x = 0; x<this.bars; x++){
-            let color = random(colors2);
-            let index = colors2.indexOf(color);
-            if (index > -1) { // only splice array when item is found
-                colors2.splice(index, 1); // 2nd parameter means remove one item only
-            }
+            
             let mean = this.data.rows[x].obj.Mean;
             let scaledMean = this.barScaler(int(-mean));
             let barHeight = this.barScaler(int(-this.data.rows[x].obj.Total));

@@ -95,6 +95,7 @@ class LineGraph {
     }
 
 
+
     // method to draw the x-axis grid lines
     xAxisGrid(){
         for(let x = 0; x <= this.ticks ;x++){
