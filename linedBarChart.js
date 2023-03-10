@@ -43,7 +43,7 @@ class linedBarChart{
         this.xAxis();
         this.linedBarChart();
         this.chartMarkers();
-        this.chartLabels();
+        this.labelling();
         this.xAxisGrid();
         this.yAxisGrid();
         this.drawMeanDots();
@@ -128,7 +128,7 @@ class linedBarChart{
     }
 
 
-    chartLabels(){
+    labelling(){
         for(let x = 0; x <= this.markers ;x++){
             noStroke();
             fill(1);

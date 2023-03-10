@@ -64,7 +64,7 @@ class LineGraph {
     this.yAxisGrid();
     this.lineGraph();
     this.tickCreation();
-    this.chartLabels();
+    this.labelling();
     
     // Restore the previous transformation matrix
     pop();
@@ -151,7 +151,7 @@ class LineGraph {
   }
     
     
-    chartLabels() {
+    labelling() {
       noStroke();
       fill(1);
       textAlign(RIGHT, CENTER);

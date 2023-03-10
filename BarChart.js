@@ -56,7 +56,7 @@ class barChart{
         this.ticksCreation();
 
         // Draw the labels on the chart
-        this.chartLabels();
+        this.labelling();
 
         // Draw the horizontal grid lines
         this.xAxisGrid();
@@ -149,7 +149,7 @@ class barChart{
     }
 
 
-    chartLabels(){
+    labelling(){
         for(let x = 0; x <= this.ticks ;x++){
             noStroke();
             fill(1);

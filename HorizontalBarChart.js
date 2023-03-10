@@ -1,6 +1,6 @@
 class HorizontalBarChart{
     
-    constructor(_posX, _posY, _height, _width, _data, _bars, _barSpace, _markers, _markerSize, _hGrid){
+    constructor(_posX, _posY, _height, _width, _data, _bars, _barSpace, _ticks, _tickSize, _hGrid){
 
         this.height = _height;
         this.width = _width;
@@ -9,12 +9,12 @@ class HorizontalBarChart{
         this.data = _data;
         this.bars = _bars;
         this.barSpace = _barSpace;
-        this.markerSize = _markerSize
-        this.markers = _markers;
+        this.tickSize = _tickSize
+        this.ticks = _ticks;
         this.leftMargin = 10;
         this.rightMargin = 10;
         this.hGrid = _hGrid
-        this.markerGap = this.height/this.markers;
+        this.tickGap = this.height/this.ticks;
         this.rectWidth = (this.width - (this.leftMargin + this.rightMargin) - ((this.bars - 1)* this.barSpace))/this.bars;
         this.barSpacing = this.rectWidth+this.barSpace;
         this.highestValue = int(this.data.rows[0].obj.Mean);
@@ -31,7 +31,7 @@ class HorizontalBarChart{
 
         this.highestValue = this.highestValue*1.4;
 
-        this.LabelGap = this.highestValue/this.markers;
+        this.LabelGap = this.highestValue/this.ticks;
     }
 
     
@@ -45,8 +45,8 @@ class HorizontalBarChart{
         this.yAxis();
         this.xAxis();
         this.horBarChart();
-        this.chartMarkers();
-        this.chartLabels();
+        this.ticksCreation();
+        this.labelling();
         this.xAxisGrid();
         this.yAxisGrid();
         this.yAxisLabels();
@@ -124,20 +124,20 @@ class HorizontalBarChart{
         }
     }
     
-    chartMarkers(){
-        for(let x = 0; x <= this.markers ;x++){
+    ticksCreation(){
+        for(let x = 0; x <= this.ticks ;x++){
             strokeWeight(1);
             push();
             translate(0, 400);
-            line(x*this.markerGap, -this.height, x*this.markerGap, -this.height-this.markerSize);
+            line(x*this.tickGap, -this.height, x*this.tickGap, -this.height-this.tickSize);
             pop();
         }
         
     }
 
 
-    chartLabels(){
-        for(let x = 0; x <= this.markers ;x++){
+    labelling(){
+        for(let x = 0; x <= this.ticks ;x++){
             noStroke();
             fill(1);
             textAlign(CENTER, CENTER);
@@ -145,7 +145,7 @@ class HorizontalBarChart{
             translate(0, 420);
             textSize(10);
             textStyle(BOLD);
-            text(int(x*this.LabelGap), x*this.markerGap, -this.height-this.markerSize);
+            text(int(x*this.LabelGap), x*this.tickGap, -this.height-this.tickSize);
             pop();
         }
         

@@ -47,7 +47,7 @@ class StackedBarChart{
         this.xAxis();
         this.StackedBarChart();
         this.tickCreation();
-        this.chartLabels();
+        this.labelling();
         this.xAxisGrid();
         this.yAxisGrid();
         this.xAxisLabels();
@@ -145,7 +145,7 @@ class StackedBarChart{
         }
     }
 
-    chartLabels(){
+    labelling(){
         for(let x = 0; x <= this.ticks ;x++){
             noStroke();
             fill(1);
